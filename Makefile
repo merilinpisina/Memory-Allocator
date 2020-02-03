@@ -1,15 +1,31 @@
-CPPFLAGS=-g -pthread -I/sw/include/root
-LDFLAGS=-g
-LDLIBS=-L/sw/lib/root -lCore -lCint -lRIO -lNet -lHist -lGraf -lGraf3d -lGpad -lTree -lRint \
-       -lPostscript -lMatrix -lPhysics -lMathCore -lThread -lz -L/sw/lib -lfreetype -lz \
-       -Wl,-framework,CoreServices -Wl,-framework,ApplicationServices -pthread -Wl,-rpath,/sw/lib/root \
-       -lm -ldl
+# TARGET_EXEC ?= allocator.out
 
-tool: tool.o support.o
-    g++ $(LDFLAGS) -o tool tool.o support.o $(LDLIBS)
+# BUILD_DIR ?= ./headers
+# SRC_DIRS ?= ./src
 
-tool.o: tool.cc support.hh
-    g++ $(CPPFLAGS) -c tool.cc
+# SRCS := $(shell find $(SRC_DIRS) -name *.cpp -or -name *.c -or -name *.s)
+# OBJS := $(SRCS:%=$(BUILD_DIR)/%.o)
+# DEPS := $(OBJS:.o=.d)
 
-support.o: support.hh support.cc
-    g++ $(CPPFLAGS) -c support.cc
+# INC_DIRS := $(shell find $(SRC_DIRS) -type d)
+# INC_FLAGS := $(addprefix -I,$(INC_DIRS))
+
+# CPPFLAGS ?= $(INC_FLAGS) -MMD -MP
+
+# $(BUILD_DIR)/$(TARGET_EXEC): $(OBJS)
+# 	$(CC) $(OBJS) -o $@ $(LDFLAGS)
+
+# # c++ source
+# $(BUILD_DIR)/%.cpp.o: %.cpp
+# 	$(MKDIR_P) $(dir $@)
+# 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $< -o $@
+
+
+# .PHONY: clean
+
+# clean:
+# 	$(RM) -r $(BUILD_DIR)
+
+# -include $(DEPS)
+
+# MKDIR_P ?= mkdir -p
